@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parkongo - Smart Parking Finder</title>
+  <link rel="stylesheet" href="./src/output.css" />
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+      <!-- Logo -->
+      <div class="flex-col items-center space-x-3">
+        <img src="./assessts/logo.png" alt="Logo" class="rounded-xl" />
+        <span class="font-bold text-xl text-gray-700">Parkongo</span>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex space-x-6 text-gray-700 text-lg">
+        <button class="home hover:text-blue-600 transition">Home</button>
+        <button class="contact hover:text-blue-600 transition">Contact Us</button>
+        <button class="about hover:text-blue-600 transition">About</button>
+        <button class="register"></button>
+        <button class="search"></button>
+        <a href="http://127.0.0.1:3000/signup.html" class="log-in bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Sign Up</a>
+        <a href="#" class="log-out hidden bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Log-out</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden relative">
+        <button class="sidebar focus:outline-none">
+          <img src="./assessts/sidebar.png" alt="Menu" class="h-8 w-8" />
+        </button>
+        <div class="side hidden absolute right-0 top-12 bg-white rounded-lg shadow-lg p-4 space-y-3 w-48 z-50 transition-all duration-300"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row items-center justify-between px-10 py-12 space-y-10 md:space-y-0">
+    <div class="text-center md:text-left md:w-1/2">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">🚗 Find Parking in a Tap</h1>
+      <p class="text-gray-600 text-lg mb-6">Easily locate available spots near you. Save time. Park smart. Drive happy.</p>
+      <a href="http://127.0.0.1:3000/signup.html" class="bg-purple-600 text-white px-6 py-3 rounded-lg shadow hover:bg-purple-700 transition">Get Started</a>
+    </div>
+    <div class="md:w-1/2 flex justify-center">
+      <img src="./assessts/use.jpg" alt="Parking Illustration" class="rounded-2xl shadow-xl w-72 md:w-96 border border-gray-300" />
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-10 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-blue-800 mb-8">Why Parkongo?</h2>
+      <div class="grid gap-8 grid-cols-1 sm:grid-cols-3">
+        <div class="p-6 rounded-lg shadow-md bg-gradient-to-tr from-blue-100 to-white">
+          <h3 class="font-semibold text-xl mb-2">Real-Time Availability</h3>
+          <p class="text-gray-600 text-sm">Always know where a spot is free—instantly updated for your ease.</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-md bg-gradient-to-tr from-purple-100 to-white">
+          <h3 class="font-semibold text-xl mb-2">Easy Navigation</h3>
+          <p class="text-gray-600 text-sm">Get turn-by-turn directions to the nearest available parking zone.</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-md bg-gradient-to-tr from-yellow-100 to-white">
+          <h3 class="font-semibold text-xl mb-2">Secure & Reliable</h3>
+          <p class="text-gray-600 text-sm">Trusted by hundreds daily. Book with confidence and peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-blue-50 py-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">About Us</h2>
+      <p class="text-gray-700">Parkongo is built with the vision of making parking hassle-free. We connect drivers to verified parking space owners, helping people save time and fuel by finding nearby parking easily.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-purple-50 py-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+      <p class="text-gray-700">Need help? Reach out at <a href="mailto:support@parkongo.in" class="text-blue-500 underline">support@parkongo.in</a>. We’re happy to help 24/7!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4 mt-auto">
+    © 2025 Parkongo. All rights reserved.
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

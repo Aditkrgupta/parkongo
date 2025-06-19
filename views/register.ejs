@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Registration | Parkongo</title>
+
+  <!-- Tailwind CSS -->
+  <link href="../src/output.css" rel="stylesheet" />
+
+  <!-- Leaflet & LocationIQ -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.3/leaflet.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.3/leaflet.js"></script>
+  <script src="https://tiles.locationiq.com/v3/js/liq-styles-ctrl-leaflet.js?v=0.1.8"></script>
+  <link rel="stylesheet" href="https://tiles.locationiq.com/v3/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.css" />
+  <script src="https://tiles.locationiq.com/v3/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@tabler/icons@1.39.1/iconfont/tabler-icons.min.js"></script>
+
+  <style>
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 flex flex-col items-center justify-start px-4 py-6 text-white font-sans">
+
+  <!-- Logo -->
+  <div class="mb-6">
+    <img src="../assessts/logo.png" alt="Parkongo Logo" class="h-16 md:h-20 w-auto drop-shadow-md rounded-lg" />
+  </div>
+
+  <!-- Intro Section -->
+  <div class="text-center max-w-3xl mb-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-3 text-white">Register Your Parking Space</h1>
+    <p class="text-lg md:text-xl text-gray-300">Earn passive income by listing your empty parking spots on Parkongo. Connect with local drivers easily!</p>
+  </div>
+
+  <!-- Main Card -->
+  <div class="w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-10 flex flex-col md:flex-row gap-8 text-gray-800">
+
+    <!-- Form Section -->
+    <form class="w-full md:w-1/2 space-y-6 animate-fade-in" onsubmit="return false">
+      <h2 class="text-3xl font-bold text-center text-indigo-700">🚗 Owner Registration</h2>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Full Name</label>
+        <input type="text" name="name" placeholder="e.g. Aditya"
+          class="name w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Email Address</label>
+        <input type="email" name="email" placeholder="example@gmail.com"
+          class="email w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Price (₹/hour)</label>
+        <input type="number" name="price" placeholder="e.g. 300"
+          class="price w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" min="0" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Type of Parking</label>
+        <select name="vehicleType"
+          class="wheeler w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+          <option value="">Select</option>
+          <option value="2-wheeler">2-Wheeler</option>
+          <option value="4-wheeler">4-Wheeler</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Search Address</label>
+        <!-- Leaflet will inject input here -->
+      </div>
+
+      <button type="submit"
+        class="sub w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl text-lg font-semibold shadow-md transition-all duration-300">
+        ✅ Submit
+      </button>
+
+      <div class="invalid text-red-600 text-center font-semibold"></div>
+      <div class="valid text-green-600 text-center font-semibold"></div>
+    </form>
+
+    <!-- Map Section -->
+    <div class="w-full md:w-1/2 h-96 md:h-auto rounded-xl overflow-hidden shadow-lg animate-slide-in">
+      <div id="map" class="h-full w-full rounded-xl"></div>
+    </div>
+  </div>
+
+  <!-- Benefits Section -->
+  <div class="mt-12 max-w-6xl text-left text-white">
+    <h3 class="text-3xl font-bold mb-4">🔍 Why Register Your Space with Parkongo?</h3>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-gray-300 list-disc pl-5">
+      <li><i class="ti ti-cash text-indigo-400"></i> Turn idle space into monthly income</li>
+      <li><i class="ti ti-map-pin text-indigo-400"></i> Increase visibility with real-time map location</li>
+      <li><i class="ti ti-clock text-indigo-400"></i> No complicated setup — 2-min quick registration</li>
+      <li><i class="ti ti-users text-indigo-400"></i> Trusted by local commuters and businesses</li>
+    </ul>
+  </div>
+
+  <script>
+    const key = "<%= apiKey %>";
+
+    const streets = L.tileLayer.Unwired({
+      key: key,
+      scheme: "streets"
+    });
+
+    const map = L.map('map', {
+      center: [28.6139, 77.2090],
+      zoom: 13,
+      scrollWheelZoom: true,
+      layers: [streets],
+      zoomControl: false
+    });
+
+    L.control.geocoder(key, {
+      url: "https://api.locationiq.com/v1",
+      expanded: true,
+      panToPoint: true,
+      focus: true,
+      position: "topleft"
+    }).addTo(map);
+
+    const sub = document.querySelector(".sub");
+
+    sub.addEventListener('click', async () => {
+      const valid = document.querySelector(".valid");
+      const invalid = document.querySelector(".invalid");
+
+      try {
+        const space = document.querySelector(".leaflet-locationiq-input");
+        const wheeler = document.querySelector(".wheeler").value.trim();
+        const name = document.querySelector(".name").value.trim();
+        const address = space?.value?.trim();
+        const email = document.querySelector(".email").value.trim();
+        const price = document.querySelector(".price").value.trim();
+
+        if (!address || !wheeler || !name || !price || !email) {
+          invalid.innerHTML = '⚠️ Please fill all fields';
+          valid.innerHTML = '';
+          return;
+        }
+
+        const res = await fetch("http://127.0.0.1:3000/api/auth/registered", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, wheeler, address, price })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          valid.innerHTML = data.message;
+          invalid.innerHTML = '';
+          setTimeout(() => {
+            window.location.href = "http://127.0.0.1:3000/";
+          }, 2000);
+        } else {
+          invalid.innerHTML = data.message;
+          valid.innerHTML = '';
+        }
+      } catch (error) {
+        invalid.innerHTML = '❌ Failed to connect to server';
+        valid.innerHTML = '';
+        console.error("Error:", error);
+      }
+    });
+  </script>
+</body>
+</html>

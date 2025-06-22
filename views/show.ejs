@@ -84,6 +84,7 @@
       L.circle([userLat, userLon], { radius: 10, color: 'green' }).addTo(map).bindPopup("📍 You are here");
 
     }, () => {
+       document.getElementById("distance").textContent = 'Please provide location permission';
       alert("Location permission denied.");
     });
   } catch (err) {

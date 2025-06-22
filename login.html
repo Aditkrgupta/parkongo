@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="./src/output.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Parkongo</title>
+  <link rel="stylesheet" href="./src/output.css">
 </head>
-<body class="bg-zinc-500">
-    <div class="container flex  w-full h-screen">
-        <div class="shift1 flex-col flex-1  rounded-2xl bg-gray-300 shadow-md z-50 filter  contrast-125 saturate-150 drop-shadow-lg justify-center m-10 mb-16">  
+<body class="bg-zinc-500 font-sans">
 
-            <div class="logo m-8"><img class="rounded-full" src="./assessts/logo.png" alt=""></div>
-<div class="box w-11/12  mx-auto shadow-md z-50 filter bg-slate-50 rounded-2xl contrast-125 saturate-150 drop-shadow-lg mt-10 p-3 px-4">
-  <div class="invalid text-red-600 text-2xl text-center "></div>
-  <p class="mt-3 text-2xl text-center md:text-2xl uppercase font-semibold bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 bg-clip-text text-transparent">Username</p>
-  <input
-    type="text"
-    placeholder="Enter the Username"
-    class="inptuser mt-6 w-full px-4 py-2 text-center border border-black rounded-md placeholder-gray-500"
-  />
+  <div class="container flex flex-col sm:flex-row w-full h-screen">
 
-  <p class="mt-6 text-2xl text-center md:text-2xl uppercase font-semibold bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 bg-clip-text text-transparent">Password</p>
-  <input
-    type="password"
-    placeholder="Enter the Password"
-    class="inptpassword mt-6 w-full px-4 py-2 text-center border border-black rounded-md placeholder-gray-500"
-  />
-  <div class="mt-6 rounded-lg ml-4 mr-4  bg-blue-800"><button class="login mt-3 w-full text-xl text-center md:text-2xl   font-semibold bg-white bg-clip-text text-transparent transition-transform duration-300 hover:scale-110">Login</button></div>
-<div class=" mt-6 flex">
-    <a class=" flex-1  text-blue-600 " href="http://">Forgot your password?</a>
-        <a class="signup flex-1  text-blue-600 " href="/signup">Sign up</a>
-    
 
-</div>
-</div>
+    <div class="shift1 flex-1 rounded-2xl bg-gray-300 shadow-md z-50 filter contrast-125 saturate-150 drop-shadow-lg justify-center m-4 sm:m-10 sm:mb-16 flex flex-col">
 
+      <div class="logo m-6 sm:m-8">
+        <img class="rounded-full w-16 h-16 sm:w-20 sm:h-20" src="./assessts/logo.png" alt="Logo">
+      </div>
+
+      <div class="box w-11/12 mx-auto shadow-md z-50 bg-slate-50 rounded-2xl contrast-125 saturate-150 drop-shadow-lg mt-6 sm:mt-10 p-4 sm:p-6">
+        
+        <div class="invalid text-red-600 text-center text-sm sm:text-xl font-medium"></div>
+
+        <p class="mt-3 text-base sm:text-2xl text-center uppercase font-semibold bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 bg-clip-text text-transparent">Username</p>
+        <input
+          type="text"
+          placeholder="Enter the Username"
+          class="inptuser mt-3 w-full px-4 py-2 text-sm sm:text-base text-center border border-black rounded-md placeholder-gray-500"
+        />
+
+        <p class="mt-6 text-base sm:text-2xl text-center uppercase font-semibold bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 bg-clip-text text-transparent">Password</p>
+        <input
+          type="password"
+          placeholder="Enter the Password"
+          class="inptpassword mt-3 w-full px-4 py-2 text-sm sm:text-base text-center border border-black rounded-md placeholder-gray-500"
+        />
+
+        <div class="mt-6 rounded-lg bg-blue-800">
+          <button class="login mt-3 w-full py-2 text-base sm:text-xl text-center font-semibold bg-white bg-clip-text text-transparent transition-transform duration-300 hover:scale-110">Login</button>
         </div>
-        <div class="shift2 hidden sm:block flex-col flex-1  rounded-2xl bg-gray-300 shadow-md z-50 filter  contrast-125 saturate-150 drop-shadow-lg justify-center m-10 mb-16">
-          <div class="trial-quote"><p class="text-center p-5 rounded-2xl bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 text-2xl">🚘 Search. Locate. Park.</p></div>
-          <div class="trial  h-screen "><img class="h-4/6 mx-auto mt-5 rounded-2xl" src="./assessts/trial.jpg" alt=""></div>
-          
+
+        <div class="mt-6 flex text-sm sm:text-base">
+          <a class="flex-1 text-blue-600" href="#">Forgot your password?</a>
+          <a class="signup flex-1 text-blue-600 text-right" href="/signup">Sign up</a>
         </div>
+
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/joi-browser@13.4.0/dist/joi-browser.min.js"></script>
-     <script src="login.js"></script>
+
+    <div class="shift2 hidden sm:flex flex-1 flex-col rounded-2xl bg-gray-300 shadow-md z-50 filter contrast-125 saturate-150 drop-shadow-lg justify-center m-10 mb-16">
+      <div class="trial-quote">
+        <p class="text-center p-5 rounded-2xl bg-gradient-to-r from-blue-300 via-blue-950 to-purple-600 text-xl sm:text-2xl">🚘 Search. Locate. Park.</p>
+      </div>
+      <div class="trial h-full flex justify-center items-center">
+        <img class="h-3/5 sm:h-4/6 mx-auto mt-5 rounded-2xl" src="./assessts/trial.jpg" alt="Illustration">
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/joi-browser@13.4.0/dist/joi-browser.min.js"></script>
+  <script src="login.js"></script>
 
 </body>
 </html>

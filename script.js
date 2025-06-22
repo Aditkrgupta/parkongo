@@ -62,7 +62,7 @@ sidebar.addEventListener("click", async () => {
       <button class="search block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">
         <a href="${isLoggedIn ? '/search' : '/signup'}">Search the space </a>
       </button>
-      ${isLoggedIn ? `<a href="#" class="log-out block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log out</a>` : `<a href="http://127.0.0.1:3000/signup.html" class="log-in block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Sign Up</a>`}
+      ${isLoggedIn ? `<a href="#" class="log-out block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log out</a>` : `<a href="/signup.html" class="log-in block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Sign Up</a>`}
     `;
 
     side.classList.remove("hidden");

@@ -136,7 +136,7 @@
       const address = space?.value?.trim();
 
       try {
-        const res = await fetch("http://127.0.0.1:3000/api/auth/show", {
+        const res = await fetch("/api/auth/show", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -149,7 +149,7 @@
 
         if (res.ok && data.success) {
            localStorage.setItem("parkingData", JSON.stringify(data.existingOwner));
-          window.location.href = "http://127.0.0.1:3000/show";
+          window.location.href = "/show";
         } else {
           document.querySelector(".invalid").innerHTML = "Search failed: " + data.message;
         }

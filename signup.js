@@ -6,7 +6,7 @@ document.querySelector('.signup').addEventListener('click', async () => {
   const code=document.querySelectorAll(".verification-code")
   
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/auth/signup", {
+    const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ document.querySelector('.signup').addEventListener('click', async () => {
           invalid.innerHTML=''
     
 
-         const ressend = await fetch("http://127.0.0.1:3000/api/auth/sendVerification", {
+         const ressend = await fetch("/api/auth/sendVerification", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -57,7 +57,7 @@ document.body.addEventListener('click', async (e) => {
     const invalid = document.querySelector('.invalid');
 
     try {
-      const resverify = await fetch("http://127.0.0.1:3000/api/auth/verification", {
+      const resverify = await fetch("/api/auth/verification", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"

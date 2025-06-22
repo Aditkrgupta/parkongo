@@ -8,7 +8,7 @@
       const password = document.querySelector('.inptpassword').value;
 
       try {
-        const res = await fetch("http://127.0.0.1:3000/api/auth/signin", {
+        const res = await fetch("/api/auth/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -24,7 +24,7 @@
           // console.log("Token:", data.token);
 
           // Redirect after login
-          window.location.href = "http://127.0.0.1:3000/";
+          window.location.href = "/";
         } else {
           alert("Login failed: " + data.message);
           invalid.innerHTML = "Login failed: " + data.message;

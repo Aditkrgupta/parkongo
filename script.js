@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const desktopLogout = document.querySelector('.log-out');
 
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/auth/verify-token", {
+    const res = await fetch("/api/auth/verify-token", {
       credentials: "include",
     });
     const data = await res.json();
@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (res.ok && data.success) {
       desktopLogin.classList.add("hidden");
       desktopLogout.classList.remove("hidden");
-      register.innerHTML = '<a href="http://127.0.0.1:3000/register">Register ur space </a>';
-      search.innerHTML = '<a href="http://127.0.0.1:3000/search">Search the space </a>';
+      register.innerHTML = '<a href="/register">Register ur space </a>';
+      search.innerHTML = '<a href="/search">Search the space </a>';
 
       desktopLogout.addEventListener("click", async () => {
-        await fetch("http://127.0.0.1:3000/api/auth/signout", {
+        await fetch("/api/auth/signout", {
           method: "POST",
           credentials: "include"
         });
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     desktopLogin.classList.remove("hidden");
     desktopLogout.classList.add("hidden");
-    register.innerHTML = '<a href="http://127.0.0.1:3000/signup.html">Register ur space </a>';
-    search.innerHTML = '<a href="http://127.0.0.1:3000/signup.html">Search the space </a>';
+    register.innerHTML = '<a href="/signup.html">Register ur space </a>';
+    search.innerHTML = '<a href="/signup.html">Search the space </a>';
   }
 });
 
@@ -42,7 +42,7 @@ let isOpen = false;
 sidebar.addEventListener("click", async () => {
   let isLoggedIn = false;
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/auth/verify-token", {
+    const res = await fetch("/api/auth/verify-token", {
       credentials: "include"
     });
     const data = await res.json();
@@ -57,10 +57,10 @@ sidebar.addEventListener("click", async () => {
       <button class="contact block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">Contact Us</button>
       <button class="about block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">About</button>
       <button class="register block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">
-        <a href="${isLoggedIn ? 'http://127.0.0.1:3000/register' : 'http://127.0.0.1:3000/signup.html'}">Register ur space </a>
+        <a href="${isLoggedIn ? '/register' : '/signup.html'}">Register ur space </a>
       </button>
       <button class="search block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">
-        <a href="${isLoggedIn ? 'http://127.0.0.1:3000/search' : 'http://127.0.0.1:3000/signup.html'}">Search the space </a>
+        <a href="${isLoggedIn ? '/search' : '/signup.html'}">Search the space </a>
       </button>
       ${isLoggedIn ? `<a href="#" class="log-out block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log out</a>` : `<a href="http://127.0.0.1:3000/signup.html" class="log-in block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Sign Up</a>`}
     `;
@@ -71,7 +71,7 @@ sidebar.addEventListener("click", async () => {
     if (isLoggedIn) {
       const logoutBtn = side.querySelector('.log-out');
       logoutBtn.addEventListener("click", async () => {
-        await fetch("http://127.0.0.1:3000/api/auth/signout", {
+        await fetch("/api/auth/signout", {
           method: "POST",
           credentials: "include"
         });
@@ -94,4 +94,4 @@ const scrollToSection = (id) => {
 
 document.querySelector(".about").addEventListener("click", () => scrollToSection("about"));
 document.querySelector(".contact").addEventListener("click", () => scrollToSection("contact"));
-document.querySelector(".home").addEventListener("click", () =>window.location.href = "http://127.0.0.1:3000/");
+document.querySelector(".home").addEventListener("click", () =>window.location.href = "/");

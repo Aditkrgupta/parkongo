@@ -149,7 +149,7 @@
           return;
         }
 
-        const res = await fetch("http://127.0.0.1:3000/api/auth/registered", {
+        const res = await fetch("/api/auth/registered", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -162,7 +162,7 @@
           valid.innerHTML = data.message;
           invalid.innerHTML = '';
           setTimeout(() => {
-            window.location.href = "http://127.0.0.1:3000/";
+            window.location.href = "/";
           }, 2000);
         } else {
           invalid.innerHTML = data.message;

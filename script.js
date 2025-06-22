@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     desktopLogin.classList.remove("hidden");
     desktopLogout.classList.add("hidden");
-    register.innerHTML = '<a href="/signup.html">Register ur space </a>';
-    search.innerHTML = '<a href="/signup.html">Search the space </a>';
+    register.innerHTML = '<a href="/signup">Register ur space </a>';
+    search.innerHTML = '<a href="/signup">Search the space </a>';
   }
 });
 
@@ -57,10 +57,10 @@ sidebar.addEventListener("click", async () => {
       <button class="contact block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">Contact Us</button>
       <button class="about block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">About</button>
       <button class="register block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">
-        <a href="${isLoggedIn ? '/register' : '/signup.html'}">Register ur space </a>
+        <a href="${isLoggedIn ? '/register' : '/signup'}">Register ur space </a>
       </button>
       <button class="search block w-full text-left px-4 py-2 text-gray-700 rounded hover:bg-blue-100 transition">
-        <a href="${isLoggedIn ? '/search' : '/signup.html'}">Search the space </a>
+        <a href="${isLoggedIn ? '/search' : '/signup'}">Search the space </a>
       </button>
       ${isLoggedIn ? `<a href="#" class="log-out block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log out</a>` : `<a href="http://127.0.0.1:3000/signup.html" class="log-in block w-full text-left px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Sign Up</a>`}
     `;

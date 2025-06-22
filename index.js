@@ -7,12 +7,12 @@ require('dotenv').config();
 
 const authRouter = require('./Routers/authRouter');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: 'http://localhost:3000',  
+  origin: ['http://localhost:3000', 'https://parkongo.onrender.com'],
+  credentials: true
 }));
-
 
 app.use(express.json());
 app.use(cookieParser()); 
@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/api/auth', authRouter);
 app.use(express.static(path.join(__dirname)));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'home.html'));
 });
@@ -38,7 +39,10 @@ app.get('/search', (req, res) => {
 app.get('/show', (req, res) => {
   res.render('show', { apiKey: process.env.API_KEY });
 });
-mongoose.connect('mongodb://127.0.0.1:27017/parkongo').then(() => {
-  console.log('MongoDB connected');
-  app.listen(PORT, () => console.log(`Server running at http://127.0.0.1:${PORT}`));
-}).catch((err) => console.error('DB Error:', err));
+
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log('MongoDB connected');
+    app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+  })
+  .catch((err) => console.error('DB Error:', err));
